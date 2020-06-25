@@ -1,6 +1,30 @@
 {
+  "scripts": {
+    "dev": "yarn parcel src/index.js",
+    "build": "yarn parcel build src/index.js --target node --bundle-node-modules ",
+    "start": "node ./dist/index.js",
+    "test": "yarn build && yarn start"
+  },
+  "targets": {
+    "main": {
+      "engines": {
+        "node": ">=13.x",
+        "electron": ">=2.x"
+      }
+    },
+    "browser": {
+      "engines": {
+        "browsers": [
+          "> 1%",
+          "not dead"
+        ]
+      }
+    }
+  },
   "dependencies": {
     "axios": "^0.19.2",
-    "cheerio": "^1.0.0-rc.3"
-  }
+    "cheerio": "^1.0.0-rc.3",
+    "parcel-bundler": "^1.12.4"
+  },
+  "devDependencies": {}
 }
