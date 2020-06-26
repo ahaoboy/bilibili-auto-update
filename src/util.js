@@ -69,6 +69,7 @@ export async function getHtml(url = bilibili_url) {
 
 // 点赞
 export async function like(aid, like = 1) {
+  headers['referer'] = `https://www.bilibili.com/video/${enc(aid)}`
   const data = {
     aid, //498566183 497918057
     like, // 1 点赞,2 取消点赞
@@ -85,6 +86,7 @@ export async function like(aid, like = 1) {
 // 投币
 export async function coin(aid, multiply = 1, select_like = 0) {
   const url = "https://api.bilibili.com/x/web-interface/coin/add"
+  headers['referer'] = `https://www.bilibili.com/video/${enc(aid)}`
   const data = {
     aid, // av的id号
     multiply,  // 硬币数目
