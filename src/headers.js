@@ -1,7 +1,5 @@
 import {env} from "process";
-
 const BILIBILI_COOKIE = env.BILIBILI_COOKIE
-// console.log('BILIBILI_COOKIE', BILIBILI_COOKIE)
 const headers = {
   "origin": "https://www.bilibili.com",
   "referer": "https://www.bilibili.com/video/BV1HK411575w?spm_id_from=333.851.b_62696c695f7265706f72745f646f756761.2",
@@ -20,9 +18,8 @@ const s = headers['cookie']
 
 let re = /bili_jct=(.*?);/;
 let list = re.exec(s);
-// console.log('re', re.exec(s))
 const csrf = list[1];
-// console.log('csrf', csrf)
+// const csrf = '';
 export {
   headers,
   csrf
