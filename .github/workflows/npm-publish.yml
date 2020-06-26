@@ -8,31 +8,11 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    #    container:
-    #      image: ubuntu:ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      #      - name: Create local changes
-      #        run: |
-      #          sudo -s
-      #          chmod 777 geckodriver
-      #          sudo npm i
-      #          sudo npm   start
       - name: Commit files
         run: |
-          chmod 777 geckodriver
-          whoami
-          npm install
-          npm   start
-          sudo -s
-          sudo   npm install -g markdown-pdf --unsafe-perm
-          sudo markdown-pdf README.md
-          whoami
-          sudo git config --local user.email "504595380@qq.com"
-          sudo git config --local user.name "ahaoboy"
-          sudo git add .
-          sudo git commit -m "action update" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+          yarn install
+          yarn test
         with:
-          github_token: ${{ secrets.BILIBILI_COOKIE }}
+          BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}
