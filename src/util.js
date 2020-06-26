@@ -84,6 +84,7 @@ export async function like(aid, like = 1) {
 
 // 投币
 export async function coin(aid, multiply = 1, select_like = 0) {
+  const url = "https://api.bilibili.com/x/web-interface/coin/add"
   const data = {
     aid, // av的id号
     multiply,  // 硬币数目
