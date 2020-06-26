@@ -13,6 +13,7 @@ jobs:
       - name: bilibili-auto-update
         run: |
           yarn install
-          yarn test
+#          如果需要上传时就执行一次, 将下面的语句打开
+#          yarn test
         env:
           BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}

@@ -1,0 +1,23 @@
+name: everyPush
+#on: [push]
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # 每天凌晨两点 对应中国上午十点
+    - cron: "0 2 * * *"
+# on:
+#   schedule:
+# * is a special character in YAML so you have to quote this string
+#     - cron:  '*/15 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: bilibili-auto-update
+        run: |
+          yarn install
+          yarn test
+        env:
+          BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}
