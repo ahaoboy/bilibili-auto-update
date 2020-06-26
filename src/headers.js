@@ -1,3 +1,6 @@
+import {env} from "process";
+
+const BILIBILI_COOKIE = env.BILIBILI_COOKIE
 const headers = {
   "accept": "*/*",
   "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
@@ -7,6 +10,15 @@ const headers = {
   "sec-fetch-site": "same-site",
   "referrer": "https://www.bilibili.com",
   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36',
+  'cookie': BILIBILI_COOKIE
 }
+const s = headers['cookie']
 
-export default headers
+let re = /bili_jct=(.*?);/;
+let list = re.exec(s);
+const csrf = list[1];
+
+export {
+  headers,
+  csrf
+}

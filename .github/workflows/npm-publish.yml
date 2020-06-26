@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Commit files
+      - name: bilibili-auto-update
         run: |
           yarn install
           yarn test
-        with:
+        env:
           BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}

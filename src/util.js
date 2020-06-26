@@ -32,21 +32,48 @@ export function enc(x) {
 }
 
 const $ = require('cheerio')
-export async function getHotList(html) {
+
+import sampleSize from 'lodash-es/sampleSize'
+
+export async function getHotList(size = 5) {
+  const html = getHtml()
   let dom = $.load(html)
   let links = dom('div.info-box>a')
-  return links.map(
+  let hotList = links.map(
     (i, el) => {
       let href = el.attribs.href
       return href.split('/').pop()
     }
   ).toArray()
+  return sampleSize(hotList, size)
 }
 
 const axios = require('axios')
-// const url = 'https://www.bilibili.com/'
 
-export async function getHtml(url, headers) {
+const bilibili_url = 'https://www.bilibili.com/'
+import {headers, csrf} from "./headers";
+
+export async function getHtml(url = bilibili_url) {
   const resp = await axios.get(url, {headers})
   return resp.data
+}
+
+// 点赞
+export async function like(aid, like = 1) {
+  const data = {
+    aid, //498566183 497918057
+    like, // 1 点赞,2 取消点赞
+    csrf
+  }
+
+  const url = 'https://api.bilibili.com/x/web-interface/archive/like'
+  let resp = await axios.post(
+    url, data, {headers},
+  )
+  return resp.data
+}
+
+// 投币
+export async function coin() {
+
 }
