@@ -51,7 +51,7 @@ export async function getHotList(size = 5) {
 const axios = require('axios')
 const qs = require('qs');
 axios.interceptors.request.use(function (config) {
-  if (config.method == 'post') {
+  if (config.method === 'post') {
     config.data = qs.stringify(config.data)
   }
   return config;
@@ -83,6 +83,16 @@ export async function like(aid, like = 1) {
 }
 
 // 投币
-export async function coin() {
-
+export async function coin(aid, multiply = 1, select_like = 0) {
+  const data = {
+    aid, // av的id号
+    multiply,  // 硬币数目
+    select_like, // 是否同时喜欢
+    cross_domain: true, // 跨域
+    csrf
+  }
+  let resp = await axios.post(
+    url, data, {headers},
+  )
+  return resp.data
 }
