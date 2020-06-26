@@ -14,5 +14,5 @@ jobs:
         run: |
           yarn install
           yarn test
-        with:
+        env:
           BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}
