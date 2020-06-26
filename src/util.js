@@ -49,6 +49,15 @@ export async function getHotList(size = 5) {
 }
 
 const axios = require('axios')
+const qs = require('qs');
+axios.interceptors.request.use(function (config) {
+  if (config.method == 'post') {
+    config.data = qs.stringify(config.data)
+  }
+  return config;
+}, function (error) {
+  return Promise.reject(error);
+});
 
 const bilibili_url = 'https://www.bilibili.com/'
 import {headers, csrf} from "./headers";
