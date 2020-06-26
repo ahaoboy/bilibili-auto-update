@@ -36,7 +36,7 @@ const $ = require('cheerio')
 import sampleSize from 'lodash-es/sampleSize'
 
 export async function getHotList(size = 5) {
-  const html = getHtml()
+  const html = await getHtml()
   let dom = $.load(html)
   let links = dom('div.info-box>a')
   let hotList = links.map(
