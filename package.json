@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "yarn parcel src/index.js",
-    "build": "yarn parcel build src/index.js --target node --bundle-node-modules --experimental-scope-hoisting",
+    "build": "yarn parcel build src/index.js --target node --bundle-node-modules",
     "start": "node ./dist/index.js",
     "test": "yarn build && yarn start"
   },
