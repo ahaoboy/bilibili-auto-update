@@ -1,4 +1,4 @@
-name: everyPush
+name: everyDay
 #on: [push]
 on:
   schedule:

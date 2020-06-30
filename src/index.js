@@ -1,4 +1,4 @@
-import {dec, enc, getHotList, coin, like} from "./util";
+import {dec, enc, getHotList, coin, logEveryDay, like} from "./util";
 
 
 async function main() {
@@ -17,6 +17,9 @@ async function main() {
     if (count >= 5)
       return
   }
+  let logResp = await logEveryDay()
+  console.log('logResp', logResp)
+
   // const promiseList = hotList.map(
   //   aid => like(dec(aid))
   // )

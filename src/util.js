@@ -109,3 +109,19 @@ export async function coin(aid, multiply = 1, select_like = 0) {
   )
   return resp.data
 }
+
+// 播放视频和每日登陆的奖励
+// const {Builder} = require('selenium-webdriver');
+// const firefox = require('selenium-webdriver/firefox');
+//
+// export async function play() {
+//
+// }
+
+
+export async function logEveryDay() {
+  const url = 'https://data.bilibili.com/log/web'
+  return await axios.post(
+    url, {}, {headers},
+  )
+}
